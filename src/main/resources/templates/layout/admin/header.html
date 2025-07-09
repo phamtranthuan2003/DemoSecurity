@@ -1,0 +1,119 @@
+<!-- layout/admin/header.html -->
+<div th:fragment="header">
+  <div class="sidebar">
+    <h4>Admin Panel</h4>
+
+    <a
+      href="/admin/home"
+      class="nav-link"
+      th:classappend="${activePage == 'home'} ? 'active'"
+    >
+      <i class="bi bi-speedometer2"></i> Dashboard
+    </a>
+    <a
+      href="/admin/blogsList"
+      class="nav-link"
+      th:classappend="${activePage == 'hotels'} ? 'active'"
+    >
+      <i class="bi bi-building"></i> Quản lí bài tuyển dụng
+    </a>
+  </div>
+</div>
+
+<style>
+  body {
+    font-family: "Segoe UI", sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+  }
+
+  .wrapper {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    height: 100vh;
+    width: 250px;
+    background: linear-gradient(to bottom, #1e2a38, #2c3e50);
+    color: #ecf0f1;
+    padding-top: 1.5rem;
+    flex-shrink: 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar h4 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: #ffffff;
+  }
+
+  .nav-link {
+    color: #bdc3c7;
+    padding: 14px 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+    position: relative;
+  }
+
+  .nav-link i {
+    font-size: 18px;
+  }
+
+  .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    border-left: 4px solid #20c997;
+  }
+
+  .nav-link.active {
+    background-color: #20c997;
+    color: #ffffff;
+    font-weight: 600;
+    border-left: 4px solid #ffffff;
+  }
+
+  /* Optional: Add divider between sidebar and content */
+  .main-content {
+    flex-grow: 1;
+    padding: 40px;
+    background-color: #f4f6f9;
+  }
+
+  .main-content h2 {
+    font-weight: 600;
+    font-size: 26px;
+    margin-bottom: 15px;
+  }
+
+  .main-content p {
+    font-size: 16px;
+    color: #555;
+  }
+
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    color: #888;
+    font-size: 14px;
+    border-top: 1px solid #ddd;
+  }
+  html,
+  body {
+    height: 100%;
+    font-family: "Segoe UI", sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+  }
+</style>
