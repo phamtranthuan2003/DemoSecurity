@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tập Đoàn Bảo Vệ Hoa Sen</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <div th:replace="layout/user/header :: header"></div>
+
+    <div class="wrapper-85">
+      <div class="slider">
+        <div class="slides" id="slides">
+          <div class="slide">
+            <img src="/images/slide1.jpg" alt="Slide 1" />
+          </div>
+          <div class="slide">
+            <img src="/images/slide2.jpg" alt="Slide 2" />
+          </div>
+          <div class="slide">
+            <img src="/images/slide3.jpg" alt="Slide 3" />
+          </div>
+        </div>
+        <!-- Nút điều hướng -->
+        <button class="nav-btn prev" onclick="prevSlide()">&#10094;</button>
+        <button class="nav-btn next" onclick="nextSlide()">&#10095;</button>
+      </div>
+    </div>
+
+    <!-- Nội dung chính -->
+    <div class="wrapper-85">
+      <section class="intro text-center">
+        <h2 class="intro-title">CÔNG TY TNHH BẢO VỆ CHUYÊN NGHIỆP HOA SEN</h2>
+        <div class="divider"></div>
+        <p class="intro-sub">Dịch vụ hoàn hảo, xứng tầm đẳng cấp</p>
+        <button class="intro-btn">XEM THÊM</button>
+      </section>
+      <section class="highlight-activity-section">
+        <div class="row">
+          <!-- Cột trái: TIÊU ĐIỂM -->
+          <div class="col-md-6 highlight-box">
+            <h3 class="section-title">TIÊU ĐIỂM</h3>
+            <img
+              src="/images/tieudiem.jpg"
+              alt="Tiêu điểm"
+              class="img-fluid w-100 rounded"
+            />
+          </div>
+
+          <!-- Cột phải: HOẠT ĐỘNG -->
+          <div class="col-md-6 activity-box">
+            <h3 class="section-title">HOẠT ĐỘNG</h3>
+            <div class="featured-news mb-3">
+              <img
+                src="/images/hoatdong.jpg"
+                alt="Hoạt động"
+                class="img-fluid float-start me-3"
+                style="width: 140px"
+              />
+              <div>
+                <strong style="color: #001b5e"
+                  >KẾT NỐI CƠ HỘI – KHAI PHÓNG TIỀM NĂNG</strong
+                >
+                <p class="mb-1">
+                  Tổng Giám đốc Tập đoàn Bảo vệ Hoa Sen tham dự Diễn đàn "Khai
+                  thác sức mạnh đầu tư của Hoa Kỳ vào miền Trung - Việt Nam"
+                  <a href="#">Xem thêm</a>
+                </p>
+              </div>
+            </div>
+
+            <ul class="activity-list list-unstyled">
+              <li>🌺 HÀNH ĐỘNG TỬ TẾ TỪ NHÂN VIÊN BẢO VỆ CÔNG TY HOA SEN</li>
+              <li>» Không Chỉ Là Nữ Giới – Họ Là Niềm Tự Hào Của Hoa Sen</li>
+              <li>» Diễn tập PCCC định kỳ</li>
+              <li>» CHÍNH SÁCH CHẤT LƯỢNG TẠI CÔNG TY BẢO VỆ HOA SEN</li>
+              <li>» KHAI XUÂN ẤT TỴ 2025</li>
+              <li>» TẾT ẤM ÁP NGHĨA TÌNH – HOA SEN TRAO YÊU THƯƠNG</li>
+              <li>
+                🌟 Bảo vệ Hoa Sen – Sự an tâm đồng hành cùng khách hàng tại GO!
+                Ninh Thuận 🌟
+              </li>
+              <li>
+                » "Tập đoàn Bảo vệ Hoa Sen Đồng Hành Cùng The Sound Freedom
+                2024"
+              </li>
+              <li>» Tập Đoàn Bảo Vệ Hoa Sen Nhận Giấy Khen Từ Tổng Cục Thuế</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- THƯ NGỎ -->
+      <section class="about-us wrapper-85">
+        <h3 class="section-title text-center">THƯ NGỎ</h3>
+        <p class="text-justify">
+          Kính thưa Quý khách hàng!<br />
+          Chúng tôi – Công ty TNHH Dịch Vụ Bảo Vệ Hoa Sen tự hào là đối tác cung
+          cấp dịch vụ bảo vệ chuyên nghiệp với nhiều năm kinh nghiệm trong lĩnh
+          vực an ninh và bảo vệ. Với đội ngũ nhân viên được đào tạo bài bản cùng
+          sự giám sát chặt chẽ, chúng tôi cam kết mang đến cho khách hàng sự an
+          tâm tuyệt đối...
+        </p>
+      </section>
+
+      <!-- DỊCH VỤ CỦA CHÚNG TÔI -->
+      <section class="our-services wrapper-85 text-center">
+        <h3 class="section-title">DỊCH VỤ CỦA CHÚNG TÔI</h3>
+        <div class="row justify-content-center">
+          <div class="col-md-4 col-sm-6 mb-4">
+            <img src="/images/dv1.jpg" class="service-icon" alt="Dịch vụ 1" />
+            <p><strong>CUNG CẤP BẢO VỆ CHUYÊN NGHIỆP</strong></p>
+          </div>
+          <div class="col-md-4 col-sm-6 mb-4">
+            <img src="/images/dv2.jpg" class="service-icon" alt="Dịch vụ 2" />
+            <p><strong>BẢO VỆ TT THƯƠNG MẠI, SIÊU THỊ, TÒA NHÀ</strong></p>
+          </div>
+          <div class="col-md-4 col-sm-6 mb-4">
+            <img src="/images/dv3.jpg" class="service-icon" alt="Dịch vụ 3" />
+            <p><strong>BẢO VỆ YẾU NHÂN</strong></p>
+          </div>
+          <div class="col-md-4 col-sm-6 mb-4">
+            <img src="/images/dv4.jpg" class="service-icon" alt="Dịch vụ 4" />
+            <p><strong>ĐÀO TẠO BẢO VỆ CHUYÊN NGHIỆP</strong></p>
+          </div>
+          <div class="col-md-4 col-sm-6 mb-4">
+            <img src="/images/dv5.jpg" class="service-icon" alt="Dịch vụ 5" />
+            <p><strong>BẢO VỆ SỰ KIỆN, LỄ HỘI CÁC TỔ CHỨC</strong></p>
+          </div>
+          <div class="col-md-4 col-sm-6 mb-4">
+            <img src="/images/dv6.jpg" class="service-icon" alt="Dịch vụ 6" />
+            <p><strong>BẢO VỆ KHU CÔNG NGHIỆP, NHÀ MÁY, CÔNG TRƯỜNG</strong></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- HÌNH ẢNH HOẠT ĐỘNG + GOOGLE MAP -->
+      <section class="activity-map wrapper-85 mt-5">
+        <div class="row">
+          <div class="col-md-6">
+            <h4 class="mb-3">HÌNH ẢNH HOẠT ĐỘNG</h4>
+            <img
+              src="/images/hd1.jpg"
+              class="img-fluid rounded"
+              alt="Hình ảnh hoạt động"
+            />
+          </div>
+          <div class="col-md-6">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.546682274227!2d106.68213117488335!3d10.770401189381906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f21294e7995%3A0xc248dc36b3dc3fcf!2zVOG6vyBkb8OgbiBi4bqvbyB24buHIGhvYSBzZW4!5e0!3m2!1svi!2s!4v1720424320170!5m2!1svi!2s"
+              width="100%"
+              height="330"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </div>
+        </div>
+      </section>
+      <!-- ĐỐI TÁC CỦA CHÚNG TÔI -->
+      <section class="wrapper-85 text-center my-5">
+        <h5 class="section-title">ĐỐI TÁC CỦA CHÚNG TÔI</h5>
+        <div
+          id="partnerCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+              <div class="d-flex justify-content-around align-items-center">
+                <img
+                  src="/images/partner1.png"
+                  class="partner-logo"
+                  alt="Trananh"
+                />
+                <img
+                  src="/images/partner2.png"
+                  class="partner-logo"
+                  alt="Metro"
+                />
+                <img
+                  src="/images/partner3.png"
+                  class="partner-logo"
+                  alt="Samsung"
+                />
+                <img src="/images/partner4.png" class="partner-logo" alt="HC" />
+                <img
+                  src="/images/partner5.png"
+                  class="partner-logo"
+                  alt="Đối tác khác"
+                />
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+              <div class="d-flex justify-content-around align-items-center">
+                <img
+                  src="/images/partner6.png"
+                  class="partner-logo"
+                  alt="Partner 6"
+                />
+                <img
+                  src="/images/partner7.png"
+                  class="partner-logo"
+                  alt="Partner 7"
+                />
+                <img
+                  src="/images/partner8.png"
+                  class="partner-logo"
+                  alt="Partner 8"
+                />
+                <img
+                  src="/images/partner9.png"
+                  class="partner-logo"
+                  alt="Partner 9"
+                />
+                <img
+                  src="/images/partner10.png"
+                  class="partner-logo"
+                  alt="Partner 10"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Dấu chấm chuyển slide -->
+          <div class="carousel-indicators mt-3">
+            <button
+              type="button"
+              data-bs-target="#partnerCarousel"
+              data-bs-slide-to="0"
+              class="active"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#partnerCarousel"
+              data-bs-slide-to="1"
+            ></button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="layout/user/footer :: footer"></div>
+    <script>
+      let slideIndex = 0;
+      const slides = document.getElementById("slides");
+      const totalSlides = slides.children.length;
+
+      function showSlide(index) {
+        const newIndex = index % totalSlides;
+        slides.style.transform = `translateX(-${newIndex * 100}%)`;
+        slideIndex = newIndex;
+      }
+
+      function nextSlide() {
+        showSlide(slideIndex + 1);
+      }
+
+      function prevSlide() {
+        showSlide((slideIndex - 1 + totalSlides) % totalSlides);
+      }
+
+      // Tự động chuyển ảnh mỗi 6 giây
+      setInterval(() => {
+        nextSlide();
+      }, 6000);
+    </script>
+  </body>
+</html>
+<style>
+  .wrapper-85 {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .slides {
+    display: flex;
+    width: 300%;
+    height: 100%;
+  }
+
+  .slide {
+    width: 100%;
+    flex-shrink: 0;
+  }
+
+  .slide img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+
+  /* Intro */
+  .intro {
+    padding: 40px 0;
+    text-align: center;
+  }
+
+  .intro h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  /* Services */
+  .services {
+    padding: 40px 0;
+    background-color: #f8f9fa;
+  }
+
+  .services h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .services .service-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .services .service-item {
+    width: 300px;
+    background: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  /* Footer */
+  footer {
+    background: #212529;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  .slider {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+  }
+
+  .slides {
+    display: flex;
+    width: 300%;
+    transition: transform 1s ease-in-out;
+  }
+
+  .slide {
+    width: 100%;
+    flex-shrink: 0;
+  }
+
+  .slide img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Nút điều hướng */
+  .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 5px;
+  }
+
+  .prev {
+    left: 20px;
+  }
+
+  .next {
+    right: 20px;
+  }
+
+  .nav-btn:hover {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  .highlight-activity-section {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+  }
+
+  .section-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+    color: #2b2b2b;
+  }
+
+  .section-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #8b4e09;
+    margin-top: 5px;
+  }
+
+  .activity-list li {
+    padding: 5px 0;
+    border-bottom: 1px dotted #ccc;
+    font-size: 15px;
+    color: #333;
+    list-style: none;
+  }
+
+  .activity-list li:last-child {
+    border-bottom: none;
+  }
+
+  .featured-news img {
+    border-radius: 5px;
+  }
+
+  @media (max-width: 767px) {
+    .featured-news img {
+      width: 100%;
+      float: none !important;
+      margin: 0 0 10px 0;
+    }
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+    color: #2b2b2b;
+    border-bottom: 3px solid #8b4e09;
+  }
+
+  .about-us p {
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: justify;
+  }
+
+  .service-icon {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+
+  .service-icon:hover {
+    transform: scale(1.05);
+  }
+
+  .our-services p {
+    margin-top: 10px;
+    color: #001b5e;
+    font-size: 14px;
+  }
+
+  .activity-map iframe {
+    border-radius: 8px;
+  }
+</style>
