@@ -14,4 +14,16 @@ public class UserHomeController {
     public String lienhe(){
         return "user/lienhe";
     }
+    @GetMapping("/gioi-thieu")
+    public String gioithieu(){
+        return "user/gioithieu";
+    }
+    @GetMapping("/tuyen-dung")
+    public String tuyendung(){
+        return "user/tuyendung";
+    }
+    @GetMapping("hinh-anh-hoat-dong")
+    public String hinhanhhoatdong(){
+        return "user/hinhanhhoatdong";
+    }
 }

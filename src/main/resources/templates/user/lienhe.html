@@ -19,20 +19,19 @@
         <div class="row">
           <!-- Bên trái: Địa chỉ + Bản đồ -->
           <div class="col-md-6">
-            <h6><strong>Công ty TNHH bảo vệ chuyên nghiệp Hoa Sen</strong></h6>
+            <h6><strong>Công ty TNHH bảo vệ Hoàng Anh Đạt</strong></h6>
             <p>
-              Địa chỉ: Số 32 - Đường Phạm Đình Toái - P.Hà Huy Tập - TP.Vinh -
-              Nghệ An
+              Địa chỉ: Số 130 - Đường Nguyễn Du - Việt Trì - Phú Thọ
             </p>
             <p>Điện thoại: <strong>02388.699.988</strong></p>
             <iframe
-              src="https://www.google.com/maps?q=tập+đoàn+bảo+vệ+hoa+sen&output=embed"
-              width="100%"
-              height="300"
-              style="border: 0"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=130+Nguyễn+Du,+Việt+Trì,+Phú+Thọ&output=embed"
+                width="100%"
+                height="300"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
 
@@ -90,36 +89,125 @@
         <h2 class="text-center mb-4 fw-bold text-primary">
           ĐỐI TÁC CỦA CHÚNG TÔI
         </h2>
-        <div class="p-4 bg-white rounded shadow-sm">
-          <div class="d-flex align-items-center">
-            <img
-              src="/images/lotus-logo.png"
-              alt="Lotus Security"
-              style="height: 100px"
-              class="me-4"
-            />
-            <div>
-              <h5 class="mb-1 fw-bold">
-                CÔNG TY TNHH BẢO VỆ CHUYÊN NGHIỆP HOA SEN
-              </h5>
-              <p class="mb-1">
-                Số 32 - Đường Phạm Đình Toái - P.Hà Huy Tập - TP.Vinh - Nghệ An
-              </p>
-              <p class="mb-1">
-                Điện thoại: <strong>02388.699.988</strong> - Hotline:
-                <strong>0904.889.144</strong>
-              </p>
-              <p>
-                Email:
-                <a href="mailto:Xuanthanglotus@gmail.com"
-                  >Xuanthanglotus@gmail.com</a
-                >
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
-    <div th:replace="layout/user/footer :: footer"></div>
+       <!-- Footer -->
+        <div th:replace="layout/user/footer :: footer"></div>
   </body>
 </html>
+<style>
+/* ===== RESET CƠ BẢN ===== */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #222;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== THÔNG TIN LIÊN HỆ ===== */
+.contact-section {
+  background-color: #fff;
+}
+
+.contact-section h2 {
+  font-size: 26px;
+  color: #333;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.contact-section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #8c4a00;
+  margin: 10px auto 0;
+}
+
+.contact-section p {
+  margin: 5px 0;
+}
+
+.contact-section .form-control {
+  border-radius: 0;
+  border: 1px solid #ccc;
+  padding: 10px 12px;
+  font-size: 15px;
+}
+
+.contact-section .form-control:focus {
+  box-shadow: none;
+  border-color: #999;
+}
+
+.contact-section textarea {
+  resize: vertical;
+}
+
+.contact-section button {
+  border-radius: 20px;
+  padding: 10px 30px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.contact-section button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* ===== ĐỐI TÁC CỦA CHÚNG TÔI ===== */
+.partners-section {
+  background-color: #f8f8f8;
+  padding: 50px 0;
+}
+
+.partners-section h2 {
+  color: #003366;
+  font-size: 24px;
+  margin-bottom: 1.5rem;
+}
+
+.partners-section h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #8c4a00;
+  margin: 10px auto 0;
+}
+
+.partners-section .shadow-sm {
+  border: 1px solid #ddd;
+  padding: 25px;
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+.partners-section img {
+  height: 100px;
+  border-radius: 6px;
+}
+
+.partners-section .info-text {
+  font-size: 15px;
+  margin-left: 20px;
+}
+
+.partners-section .info-text p {
+  margin: 4px 0;
+}
+
+.partners-section a {
+  color: #000;
+  text-decoration: none;
+}
+
+.partners-section a:hover {
+  text-decoration: underline;
+}
+</style>
