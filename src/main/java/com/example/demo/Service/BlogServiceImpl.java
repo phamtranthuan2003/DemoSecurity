@@ -2,16 +2,20 @@ package com.example.demo.Service;
 
 import com.example.demo.Entity.Blog;
 import com.example.demo.Repository.BlogRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BlogServiceImpl implements BlogService {
 
-    @Autowired
-    private BlogRepository blogRepository;
+    private final BlogRepository blogRepository;
+
+    // ✅ Dùng constructor injection thay vì @Autowired (khuyến khích)
+    public BlogServiceImpl(BlogRepository blogRepository) {
+        this.blogRepository = blogRepository;
+    }
 
     @Override
     public void save(Blog blog) {

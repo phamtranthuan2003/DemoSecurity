@@ -66,13 +66,34 @@ public class AdminController {
 
             // ✅ Trả về đúng định dạng JSON CKEditor yêu cầu
             response.put("uploaded", true); // ✅ BẮT BUỘC
-response.put("url", "/uploads/" + fileName);
-return response;
-
+            response.put("url", "/uploads/" + fileName);
+            return response;
 
         } catch (IOException e) {
             response.put("error", Map.of("message", "Lỗi khi lưu ảnh: " + e.getMessage()));
             return response;
         }
     }
+
+    @GetMapping("/blogs/edit/{id}")
+    public String editBlog(@PathVariable Long id, Model model) {
+        Blog blog = blogService.findById(id);
+        if (blog == null)
+            return "redirect:/admin/blogsList";
+        model.addAttribute("blog", blog);
+        return "admin/editBlog";
+    }
+
+    @PostMapping("/blogs/update")
+    public String updateBlog(@ModelAttribute Blog blog) {
+        blogService.save(blog);
+        return "redirect:/admin/blogsList";
+    }
+
+    @GetMapping("/blogs/delete/{id}")
+    public String deleteBlog(@PathVariable("id") Long id) {
+        blogService.delete(id);
+        return "redirect:/admin/blogsList";
+    }
+
 }
