@@ -45,7 +45,6 @@ public class AdminController {
         return "redirect:/admin/blogsList";
     }
 
-    // ✅ CHỈ SỬA LẠI ĐÚNG ĐƯỜNG DẪN
     @PostMapping("/blogs/upload-image")
     @ResponseBody
     public Map<String, Object> uploadImage(@RequestParam("upload") MultipartFile file) {
@@ -64,8 +63,7 @@ public class AdminController {
             Path filePath = Paths.get(uploadDir).resolve(fileName);
             Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
 
-            // ✅ Trả về đúng định dạng JSON CKEditor yêu cầu
-            response.put("uploaded", true); // ✅ BẮT BUỘC
+            response.put("uploaded", true);
             response.put("url", "/uploads/" + fileName);
             return response;
 

@@ -39,13 +39,10 @@
   </script>
 </head>
 <body>
-  <!-- Header -->
   <div th:replace="layout/user/header :: header"></div>
 
-  <!-- Main content -->
   <div class="main-wrapper my-5">
     <div class="row">
-      <!-- Gallery content -->
       <div class="col-md-8">
         <h4 class="mb-4 fw-bold text-uppercase">Hình ảnh hoạt động</h4>
 
@@ -53,7 +50,6 @@
           <img id="mainImage" src="/images/gallery1.jpg" class="img-fluid main-image shadow" alt="Hình ảnh hoạt động chính" />
         </div>
 
-        <!-- Thumbnails -->
         <div class="gallery-thumbnails d-flex flex-wrap justify-content-start">
           <img src="/images/gallery1.jpg" onclick="changeImage(this.src)" />
           <img src="/images/gallery2.jpg" onclick="changeImage(this.src)" />
@@ -65,7 +61,6 @@
         </div>
       </div>
 
-      <!-- Sidebar nổi bật -->
       <div class="col-md-4">
         <h5 class="fw-bold border-bottom pb-2">Hoạt động nổi bật</h5>
         <div class="mb-3">
@@ -84,7 +79,6 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <div th:replace="layout/user/footer :: footer"></div>
 </body>
 </html>

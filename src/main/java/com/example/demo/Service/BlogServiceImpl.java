@@ -5,14 +5,12 @@ import com.example.demo.Repository.BlogRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BlogServiceImpl implements BlogService {
 
     private final BlogRepository blogRepository;
 
-    // ✅ Dùng constructor injection thay vì @Autowired (khuyến khích)
     public BlogServiceImpl(BlogRepository blogRepository) {
         this.blogRepository = blogRepository;
     }

@@ -14,30 +14,25 @@ public class UserHomeController {
 
     private final BlogService blogService;
 
-    // Constructor Injection cho BlogService
     public UserHomeController(BlogService blogService) {
         this.blogService = blogService;
     }
 
-    // Trang chủ
     @GetMapping("/")
     public String home() {
         return "user/home";
     }
 
-    // Trang liên hệ
     @GetMapping("/lien-he")
     public String lienhe() {
         return "user/lienhe";
     }
 
-    // Trang giới thiệu
     @GetMapping("/gioi-thieu")
     public String gioithieu() {
         return "user/gioithieu";
     }
 
-    // Trang tuyển dụng (hiển thị danh sách blog)
     @GetMapping("/tuyen-dung")
     public String tuyendung(Model model) {
         List<Blog> blogs = blogService.findAll();
@@ -45,7 +40,6 @@ public class UserHomeController {
         return "user/tuyendung";
     }
 
-    // Trang hình ảnh hoạt động
     @GetMapping("/hinh-anh-hoat-dong")
     public String hinhanhhoatdong() {
         return "user/hinhanhhoatdong";
