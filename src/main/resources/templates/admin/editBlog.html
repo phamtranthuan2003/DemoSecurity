@@ -74,37 +74,51 @@
 <div class="form-container">
     <div class="form-title">Chỉnh sửa Bài Viết</div>
 
-    <form th:action="@{/admin/blogs/update}" th:object="${blog}" method="post">
-        <!-- Hidden ID -->
-        <input type="hidden" th:field="*{id}"/>
+    <form th:action="@{/admin/blogs/update}" th:object="${blog}" method="post" enctype="multipart/form-data">
+    <!-- Hidden ID -->
+    <input type="hidden" th:field="*{id}" />
 
-        <!-- Tiêu đề -->
-        <div class="mb-4">
-            <label for="title" class="form-label">Tiêu đề bài viết</label>
-            <input type="text" class="form-control" id="title" th:field="*{title}" placeholder="Nhập tiêu đề" required>
-        </div>
+    <!-- Tiêu đề -->
+    <div class="mb-4">
+        <label for="title" class="form-label">Tiêu đề bài viết</label>
+        <input type="text" class="form-control" id="title" th:field="*{title}" placeholder="Nhập tiêu đề" required>
+    </div>
+    <!-- Ảnh đại diện hiện tại -->
+    <div class="mb-4" th:if="${blog.image != null}">
+        <label class="form-label">Ảnh hiện tại</label><br>
+        <img th:src="@{${blog.image}}" alt="Ảnh đại diện" style="max-width: 200px; border-radius: 8px;">
+    </div>
 
-        <!-- Nội dung dùng CKEditor -->
-        <div class="mb-4">
-            <label for="content" class="form-label">Nội dung (có thể chèn ảnh)</label>
-            <textarea id="editor" name="content" th:text="*{content}"></textarea>
-        </div>
+    <!-- Upload ảnh mới -->
+    <!-- Upload ảnh mới -->
+    <div class="mb-4">
+        <label for="imageFile" class="form-label">Thay ảnh đại diện (nếu muốn)</label>
+        <input type="file" class="form-control" id="imageFile" name="imageFile" accept="image/*">
+    </div>
 
-        <!-- Tác giả -->
-        <div class="mb-4">
-            <label for="author" class="form-label">Tác giả</label>
-            <input type="text" class="form-control" id="author" th:field="*{author}" placeholder="Tên người viết" required>
-        </div>
+    <!-- Nội dung dùng CKEditor -->
+    <div class="mb-4">
+        <label for="content" class="form-label">Nội dung (có thể chèn ảnh)</label>
+        <textarea id="editor" name="content" th:text="*{content}"></textarea>
+    </div>
 
-        <!-- Nút -->
-        <div class="d-flex justify-content-end gap-2">
-            <a th:href="@{/admin/blogsList}" class="btn btn-secondary">Hủy</a>
-            <button type="submit" class="btn btn-primary">Cập nhật</button>
-        </div>
-    </form>
+    <!-- Tác giả -->
+    <div class="mb-4">
+        <label for="author" class="form-label">Tác giả</label>
+        <input type="text" class="form-control" id="author" th:field="*{author}" placeholder="Tên người viết" required>
+    </div>
+
+    
+
+    <!-- Nút -->
+    <div class="d-flex justify-content-end gap-2">
+        <a th:href="@{/admin/blogsList}" class="btn btn-secondary">Hủy</a>
+        <button type="submit" class="btn btn-primary">Cập nhật</button>
+    </div>
+</form>
+
 </div>
 
-<!-- Khởi tạo CKEditor với cấu hình ảnh resize -->
 <script>
     ClassicEditor
         .create(document.querySelector('#editor'), {

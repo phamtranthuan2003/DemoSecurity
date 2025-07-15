@@ -19,6 +19,9 @@ public class Blog {
     @Column(columnDefinition = "TEXT")
     private String content;
 
+    @Column(nullable = true)
+    private String image;
+    
     private String author;
 
     @CreationTimestamp
@@ -73,8 +76,7 @@ public class Blog {
         this.createdAt = createdAt;
     }
 
-    @Column(nullable = true)
-    private String image;
+    
 
     public String getImage() {
         return image;

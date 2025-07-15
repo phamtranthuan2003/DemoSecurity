@@ -39,8 +39,31 @@ public class AdminController {
     }
 
     @PostMapping("/blogs/save")
-    public String saveBlog(@ModelAttribute Blog blog) {
+    public String saveBlog(@RequestParam("title") String title,
+            @RequestParam("author") String author,
+            @RequestParam("content") String content,
+            @RequestParam("image") MultipartFile imageFile) {
+        Blog blog = new Blog();
+        blog.setTitle(title);
+        blog.setAuthor(author);
+        blog.setContent(content);
         blog.setCreatedAt(LocalDateTime.now());
+
+        if (!imageFile.isEmpty()) {
+            try {
+                String uploadDir = System.getProperty("user.dir") + "/uploads";
+                Files.createDirectories(Paths.get(uploadDir));
+
+                String fileName = UUID.randomUUID() + "_" + imageFile.getOriginalFilename();
+                Path filePath = Paths.get(uploadDir).resolve(fileName);
+                Files.copy(imageFile.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+
+                blog.setImage("/uploads/" + fileName);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         blogService.save(blog);
         return "redirect:/admin/blogsList";
     }
@@ -83,15 +106,46 @@ public class AdminController {
     }
 
     @PostMapping("/blogs/update")
-    public String updateBlog(@ModelAttribute Blog blog) {
-        blogService.save(blog);
+public String updateBlog(@ModelAttribute Blog blog,
+                         @RequestParam(value = "imageFile", required = false) MultipartFile imageFile) {
+
+    // Lấy lại bản ghi gốc để giữ các giá trị không gửi từ form (như createdAt)
+    Blog existing = blogService.findById(blog.getId());
+    if (existing == null) {
         return "redirect:/admin/blogsList";
     }
+
+    existing.setTitle(blog.getTitle());
+    existing.setAuthor(blog.getAuthor());
+    existing.setContent(blog.getContent());
+
+    // Xử lý ảnh nếu có ảnh mới
+    if (imageFile != null && !imageFile.isEmpty()) {
+        try {
+            String uploadDir = System.getProperty("user.dir") + "/uploads";
+            Files.createDirectories(Paths.get(uploadDir));
+
+            String fileName = UUID.randomUUID() + "_" + imageFile.getOriginalFilename();
+            Path filePath = Paths.get(uploadDir).resolve(fileName);
+            Files.copy(imageFile.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+
+            existing.setImage("/uploads/" + fileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Nếu không có ảnh mới thì giữ nguyên ảnh cũ
+    blogService.save(existing);
+    return "redirect:/admin/blogsList";
+}
+
+
+
 
     @GetMapping("/blogs/delete/{id}")
     public String deleteBlog(@PathVariable("id") Long id) {
         blogService.delete(id);
         return "redirect:/admin/blogsList";
     }
-
 }
