@@ -34,6 +34,7 @@
           </div>
 
           <div class="col-md-6">
+            <div th:if="${message}" class="alert alert-success" th:text="${message}"></div>
             <form method="post" th:action="@{/contact/send}">
               <div class="mb-3">
                 <input
