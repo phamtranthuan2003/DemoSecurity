@@ -79,7 +79,6 @@ public class AdminController {
         }
 
         try {
-            // 📁 Đường dẫn upload ảnh CKEditor
             String uploadDir = System.getProperty("user.dir") + "/uploads/editor";
             Files.createDirectories(Paths.get(uploadDir));
 
@@ -109,7 +108,6 @@ public class AdminController {
     public String updateBlog(@ModelAttribute Blog blog,
             @RequestParam(value = "imageFile", required = false) MultipartFile imageFile) {
 
-        // Lấy lại bản ghi gốc để giữ các giá trị không gửi từ form (như createdAt)
         Blog existing = blogService.findById(blog.getId());
         if (existing == null) {
             return "redirect:/admin/blogsList";
@@ -119,7 +117,6 @@ public class AdminController {
         existing.setAuthor(blog.getAuthor());
         existing.setContent(blog.getContent());
 
-        // Xử lý ảnh nếu có ảnh mới
         if (imageFile != null && !imageFile.isEmpty()) {
             try {
                 String uploadDir = System.getProperty("user.dir") + "/uploads";
@@ -135,7 +132,6 @@ public class AdminController {
             }
         }
 
-        // Nếu không có ảnh mới thì giữ nguyên ảnh cũ
         blogService.save(existing);
         return "redirect:/admin/blogsList";
     }

@@ -10,7 +10,6 @@
     />
   </head>
   <body>
-    <!-- Header -->
     <div th:replace="layout/user/header :: header"></div>
 
     <div class="wrapper-85">
@@ -26,13 +25,11 @@
             <img src="/images/slide3.jpg" alt="Slide 3" />
           </div>
         </div>
-        <!-- Nút điều hướng -->
         <button class="nav-btn prev" onclick="prevSlide()">&#10094;</button>
         <button class="nav-btn next" onclick="nextSlide()">&#10095;</button>
       </div>
     </div>
 
-    <!-- Nội dung chính -->
     <div class="wrapper-85">
       <section class="intro text-center">
         <h2 class="intro-title">CÔNG TY TNHH BẢO VỆ CHUYÊN NGHIỆP HOA SEN</h2>
@@ -44,7 +41,6 @@
       </section>
       <section class="highlight-activity-section">
         <div class="row">
-          <!-- Cột trái: TIÊU ĐIỂM -->
           <div class="col-md-6 highlight-box">
             <h3 class="section-title">TIÊU ĐIỂM</h3>
             <img
@@ -54,7 +50,6 @@
             />
           </div>
 
-          <!-- Cột phải: HOẠT ĐỘNG -->
           <div class="col-md-6 activity-box">
             <h3 class="section-title">HOẠT ĐỘNG</h3>
             <div class="featured-news mb-3">
@@ -103,7 +98,6 @@
           </div>
         </div>
       </section>
-      <!-- THƯ NGỎ -->
       <section class="about-us wrapper-85">
         <h3 class="section-title text-center">THƯ NGỎ</h3>
         <p class="text-justify">
@@ -134,7 +128,6 @@
         </p>
       </section>
 
-      <!-- DỊCH VỤ CỦA CHÚNG TÔI -->
       <section class="our-services wrapper-85 text-center">
         <h3 class="section-title">DỊCH VỤ CỦA CHÚNG TÔI</h3>
         <div class="row justify-content-center">
@@ -165,7 +158,6 @@
         </div>
       </section>
 
-      <!-- HÌNH ẢNH HOẠT ĐỘNG + GOOGLE MAP -->
       <section class="activity-map wrapper-85 mt-5">
         <div class="row">
           <div class="col-md-6">
@@ -189,7 +181,6 @@
           </div>
         </div>
       </section>
-      <!-- ĐỐI TÁC CỦA CHÚNG TÔI -->
       <section class="wrapper-85 text-center my-5">
         <h5 class="section-title">ĐỐI TÁC CỦA CHÚNG TÔI</h5>
         <div
@@ -198,7 +189,6 @@
           data-bs-ride="carousel"
         >
           <div class="carousel-inner">
-            <!-- Slide 1 -->
             <div class="carousel-item active">
               <div class="d-flex justify-content-around align-items-center">
                 <img
@@ -225,7 +215,6 @@
               </div>
             </div>
 
-            <!-- Slide 2 -->
             <div class="carousel-item">
               <div class="d-flex justify-content-around align-items-center">
                 <img
@@ -257,7 +246,6 @@
             </div>
           </div>
 
-          <!-- Dấu chấm chuyển slide -->
           <div class="carousel-indicators mt-3">
             <button
               type="button"
@@ -275,7 +263,6 @@
       </section>
     </div>
 
-    <!-- Footer -->
     <div th:replace="layout/user/footer :: footer"></div>
     <script>
       let slideIndex = 0;
@@ -296,7 +283,6 @@
         showSlide((slideIndex - 1 + totalSlides) % totalSlides);
       }
 
-      // Tự động chuyển ảnh mỗi 6 giây
       setInterval(() => {
         nextSlide();
       }, 6000);

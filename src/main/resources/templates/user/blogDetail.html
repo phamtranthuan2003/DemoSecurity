@@ -34,7 +34,6 @@
         <p class="text-muted mb-4" th:text="|Ngày đăng: ${#temporals.format(blog.createdAt, 'dd/MM/yyyy')}|"></p>
         <img th:src="${blog.image}" class="blog-img" alt="Ảnh bài viết" />
         <div class="blog-content" th:utext="${blog.content}">
-          <!-- Nội dung bài viết hiển thị tại đây -->
         </div>
       </div>
     </div>
