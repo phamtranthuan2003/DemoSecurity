@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.ui.Model;
 
 import com.example.demo.Entity.Blog;
@@ -45,12 +46,10 @@ public class UserHomeController {
         return "user/hinhanhhoatdong";
     }
 
-    // (Tuỳ chọn mở rộng) Trang chi tiết blog
-    // @GetMapping("/blogs/{id}")
-    // public String blogDetail(@PathVariable Long id, Model model) {
-    //     Blog blog = blogService.findById(id);
-    //     if (blog == null) return "redirect:/tuyen-dung";
-    //     model.addAttribute("blog", blog);
-    //     return "user/blog-detail";
-    // }
+    @GetMapping("/blog/{id}")
+        public String getBlogDetail(@PathVariable Long id, Model model) {
+            Blog blog = blogService.findById(id);
+            model.addAttribute("blog", blog);
+            return "user/blogDetail";
+    }
 }
