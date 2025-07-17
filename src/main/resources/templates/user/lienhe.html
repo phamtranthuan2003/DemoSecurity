@@ -22,8 +22,7 @@
             </p>
             <p>Điện thoại:<strong> 0989.383.222</strong></p>
             <p>Tel: <strong>0210.6.333.222</strong>
-            <iframe
-                src="https://www.google.com/maps?q=140+Nguyễn+Du,+Việt+Trì,+Phú+Thọ&output=embed"
+            <iframe src="https://www.google.com/maps?q=140+Nguyễn+Du,+Việt+Trì,+Phú+Thọ&output=embed"
                 width="100%"
                 height="300"
                 style="border: 0"
@@ -37,44 +36,18 @@
             <div th:if="${message}" class="alert alert-success" th:text="${message}"></div>
             <form method="post" th:action="@{/contact/send}">
               <div class="mb-3">
-                <input
-                  type="text"
-                  name="fullName"
-                  class="form-control"
-                  placeholder="Họ và tên"
-                  required
-                />
+                <input type="text" name="fullName" class="form-control" placeholder="Họ và tên" required/>
               </div>
               <div class="mb-3">
-                <input
-                  type="email"
-                  name="email"
-                  class="form-control"
-                  placeholder="Email đầy đủ"
-                  required
-                />
+                <input type="email" name="email" class="form-control" placeholder="Email đầy đủ" required/>
               </div>
               <div class="mb-3">
-                <input
-                  type="text"
-                  name="subject"
-                  class="form-control"
-                  placeholder="Tiêu đề"
-                  required
-                />
+                <input type="text" name="subject" class="form-control" placeholder="Tiêu đề" required/>
               </div>
               <div class="mb-3">
-                <textarea
-                  name="message"
-                  class="form-control"
-                  rows="5"
-                  placeholder="Viết lời nhắn"
-                  required
-                ></textarea>
+                <textarea name="message" class="form-control" rows="5" placeholder="Viết lời nhắn" required></textarea>
               </div>
-              <button type="submit" class="btn btn-outline-dark">
-                GỬI THÔNG TIN
-              </button>
+              <button type="submit" class="btn btn-outline-dark">GỬI THÔNG TIN</button>
             </form>
           </div>
         </div>
@@ -83,16 +56,13 @@
 
     <section class="partners-section py-5 bg-light">
       <div class="container">
-        <h2 class="text-center mb-4 fw-bold text-primary">
-          ĐỐI TÁC CỦA CHÚNG TÔI
-        </h2>
+        <h2 class="text-center mb-4 fw-bold text-primary">ĐỐI TÁC CỦA CHÚNG TÔI</h2>
       </div>
     </section>
         <div th:replace="layout/user/footer :: footer"></div>
   </body>
 </html>
 <style>
-/* ===== RESET CƠ BẢN ===== */
 body {
   font-family: Arial, sans-serif;
   font-size: 16px;
@@ -103,7 +73,6 @@ body {
   padding: 0;
 }
 
-/* ===== THÔNG TIN LIÊN HỆ ===== */
 .contact-section {
   background-color: #fff;
 }
@@ -156,7 +125,6 @@ body {
   color: #fff;
 }
 
-/* ===== ĐỐI TÁC CỦA CHÚNG TÔI ===== */
 .partners-section {
   background-color: #f8f8f8;
   padding: 50px 0;

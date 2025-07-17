@@ -1,108 +1,106 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8" />
-  <title>Tuyển Dụng - Công ty TNHH Bảo vệ Hoàng Anh Đạt</title>
-  <link rel="stylesheet" th:href="@{/css/style.css}" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <style>
-    .main-wrapper {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .news-img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .recruit-item {
-      border: 1px solid #e0e0e0;
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 25px;
-      background-color: #fafafa;
-      transition: transform 0.2s;
-    }
-
-    .recruit-item:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .sidebar-img {
-      width: 100%;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 6px;
-      margin-bottom: 10px;
-    }
-
-    .read-more a {
-      font-size: 0.9rem;
-      padding: 6px 12px;
-      border-radius: 5px;
-    }
-
-    .recruit-content p {
-      margin-bottom: 8px;
-    }
-    .blog-content {
-      display: -webkit-box;
-      -webkit-line-clamp: 1;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  </style>
-</head>
-<body>
-  <div th:replace="layout/user/header :: header"></div>
-
-  <div class="main-wrapper my-5">
-    <div class="row">
-      <!-- Nội dung tuyển dụng -->
-      <div class="col-md-8">
-        <h4 class="mb-4 fw-bold text-uppercase border-bottom pb-2">Tuyển dụng</h4>
-        <div th:each="blog : ${blogs}" class="recruit-item row">
-          <div class="col-md-4">
-            <img th:src="${blog.image}" class="news-img" alt="Ảnh tuyển dụng" />
-          </div>
-          <div class="col-md-8 recruit-content">
-            <h5 class="fw-semibold" th:text="${blog.title}">Blog Title</h5>
-            <p class="text-muted mb-1" th:text="|Ngày đăng: ${#temporals.format(blog.createdAt, 'dd/MM/yyyy')}|"></p>
-            <div class="blog-content" th:utext="${blog.content}"> 
-            </div><br>
-            <p class="read-more">
-              <a th:href="@{'/blog/' + ${blog.id}}" class="btn btn-danger btn-sm">Xem thêm</a>
-            </p>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tuyển Dụng - Công ty TNHH Bảo vệ Hoàng Anh Đạt</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div th:replace="layout/user/header :: header"></div>
+    
+    <div class="main-wrapper my-5">
+      <div class="row">
+        <div class="col-md-8">
+          <h4 class="mb-4 fw-bold text-uppercase border-bottom pb-2">Tuyển dụng</h4>
+          <div th:each="blog : ${blogs}" class="recruit-item row">
+            <div class="col-md-4">
+              <img th:src="${blog.image}" class="news-img" alt="Ảnh tuyển dụng" />
+            </div>
+            <div class="col-md-8 recruit-content">
+              <h5 class="fw-semibold" th:text="${blog.title}">Blog Title</h5>
+              <p class="text-muted mb-1" th:text="|Ngày đăng: ${#temporals.format(blog.createdAt, 'dd/MM/yyyy')}|"></p>
+              <div class="blog-content" th:utext="${blog.content}"> 
+              </div><br>
+              <p class="read-more">
+                <a th:href="@{'/blog/' + ${blog.id}}" class="btn btn-danger btn-sm">Xem thêm</a>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- Hoạt động nổi bật -->
-      <div class="col-md-4">
-        <h5 class="fw-bold border-bottom pb-2">Hoạt động nổi bật</h5>
-        <div class="mb-3">
-          <img src="/images/hoat-dong-1.jpg" class="sidebar-img" alt="Hoạt động 1" />
-          <p class="mb-1">Tết nhân ái – Hoàng Anh Đạt sẻ chia yêu thương</p>
-        </div>
-        <div class="mb-3">
-          <img src="/images/hoat-dong-2.jpg" class="sidebar-img" alt="Hoạt động 2" />
-          <p class="mb-1">PCCC định kỳ tại GO! Đà Nẵng</p>
-        </div>
-        <div class="mb-3">
-          <img src="/images/hoat-dong-3.jpg" class="sidebar-img" alt="Hoạt động 3" />
-          <p class="mb-1">Tập huấn nghiệp vụ tại Vincom Hải Phòng</p>
+        <div class="col-md-4">
+          <h5 class="fw-bold border-bottom pb-2">Hoạt động nổi bật</h5>
+          <div class="mb-3">
+            <img src="/images/hoat-dong-1.jpg" class="sidebar-img" alt="Hoạt động 1" />
+            <p class="mb-1">Tết nhân ái – Hoàng Anh Đạt sẻ chia yêu thương</p>
+          </div>
+          <div class="mb-3">
+            <img src="/images/hoat-dong-2.jpg" class="sidebar-img" alt="Hoạt động 2" />
+            <p class="mb-1">PCCC định kỳ tại GO! Đà Nẵng</p>
+          </div>
+          <div class="mb-3">
+            <img src="/images/hoat-dong-3.jpg" class="sidebar-img" alt="Hoạt động 3" />
+            <p class="mb-1">Tập huấn nghiệp vụ tại Vincom Hải Phòng</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- Footer -->
-  <div th:replace="layout/user/footer :: footer"></div>
-</body>
+    
+    <div th:replace="layout/user/footer :: footer"></div>
+  </body>
 </html>
+
+<style>
+  .main-wrapper {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .news-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .recruit-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 25px;
+    background-color: #fafafa;
+    transition: transform 0.2s;
+  }
+
+  .recruit-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .sidebar-img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+
+  .read-more a {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 5px;
+  }
+
+  .recruit-content p {
+    margin-bottom: 8px;
+  }
+  .blog-content {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+</style>
