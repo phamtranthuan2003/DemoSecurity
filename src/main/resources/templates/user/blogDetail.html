@@ -16,7 +16,6 @@
             <h1 class="fw-bold mb-3" th:text="${blog.title}">Tiêu đề bài viết</h1>
             <p class="text-muted mb-4" th:text="|Ngày đăng: ${#temporals.format(blog.createdAt, 'dd/MM/yyyy')}|"></p>
           </div><br><br>
-          <img th:src="${blog.image}" class="blog-img" alt="Ảnh bài viết" />
           <div class="blog-content" th:utext="${blog.content}">
           </div>
         </div>
@@ -40,13 +39,18 @@
     margin-bottom: 20px;
   }
 
-  .blog-content p {
-    line-height: 1.7;
-  }
-  .blog-content img {
+  .blog-content {
   max-width: 80%;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+.blog-content p,
+.blog-content img {
+  max-width: 100%;
   height: auto;
   display: block;
   margin: 20px auto;
+  border-radius: 6px;
 }
 </style>
