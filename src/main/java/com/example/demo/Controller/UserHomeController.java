@@ -37,10 +37,11 @@ public class UserHomeController {
     @GetMapping("/tuyen-dung")
     public String tuyendung(Model model) {
         List<Blog> blogs = blogService.findAll();
+        blogs.sort((a, b) -> b.getCreatedAt().compareTo(a.getCreatedAt()));
         model.addAttribute("blogs", blogs);
         return "user/tuyendung";
     }
-
+    
     @GetMapping("/hinh-anh-hoat-dong")
     public String hinhanhhoatdong() {
         return "user/hinhanhhoatdong";

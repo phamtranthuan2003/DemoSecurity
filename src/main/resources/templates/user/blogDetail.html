@@ -13,7 +13,8 @@
       <div class="row">
         <div class="col-md-12">
           <div class="text-center">
-            <h1 class="fw-bold mb-3" th:text="${blog.title}">Tiêu đề bài viết</h1>
+            <h1 class="fw-bold mb-3" th:text="${blog.title}">Tiêu đề bài viết</h1><br>
+            <h2  th:text="${blog.author}" >Tên tác giả</h2>
             <p class="text-muted mb-4" th:text="|Ngày đăng: ${#temporals.format(blog.createdAt, 'dd/MM/yyyy')}|"></p>
           </div><br><br>
           <div class="blog-content" th:utext="${blog.content}">
