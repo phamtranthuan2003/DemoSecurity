@@ -1,68 +1,150 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Dịch Vụ Bảo Vệ</title>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-</head>
-<body>
-    <div class="container my-4">
-        <h2 class="text-center mb-4">DỊCH VỤ</h2>
-        <div class="row">
-            
-        <!-- Lặp danh sách dịch vụ -->
-        <div class="col-md-6" th:each="service : ${services}">
-            <div class="service-card">
-                <div class="service-img">
-                    <img th:src="@{${service.imageUrl}}" class="img-fluid" alt="Ảnh dịch vụ">
-                    <div class="service-date" th:text="${#dates.format(service.datePosted, 'dd')} + ' Th' + ${#dates.format(service.datePosted, 'MM')}"></div>
-                </div>
-                <div class="service-body">
-                    <div class="service-title" th:text="${service.title}"></div>
-                    <div class="service-desc" th:text="${service.shortDescription}"></div>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-</div>
-</body>
-</html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tuyển Dụng - CÔNG TY TNHH DỊCH VỤ BẢO VỆ CHUYÊN NGHIỆP HOÀNG ANH ĐẠT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <div th:replace="layout/user/header :: header"></div>
 
+    <div class="container my-5">
+  <h4 class="mb-4 fw-bold text-uppercase border-bottom pb-2">Dịch vụ</h4>
+
+  <div class="service-grid">
+    <div th:each="service : ${services}" class="service-card">
+      <div class="service-img-wrapper">
+        <img th:src="${service.image}" alt="Ảnh tuyển dụng" />
+        <div class="badge-date">
+          <span th:text="${#temporals.format(service.createdAt, 'dd')}">03</span>
+          <small th:text="${#temporals.format(service.createdAt, 'MM')}">11</small>
+        </div>
+      </div>
+      <div class="service-content">
+        <div class="service-title" th:text="${service.title}"></div>
+        <div class="blog-content small" th:utext="${service.content}"></div>
+        <p class="read-more mt-3">
+          <a th:href="@{'/dich-vu/' + ${service.id}}" class="btn btn-danger btn-sm">Xem thêm</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div th:replace="layout/user/footer :: footer"></div>
 <style>
-    .service-card {
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        overflow: hidden;
-        margin-bottom: 20px;
-        transition: 0.3s;
-    }
-    .service-card:hover {
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-    .service-img {
-        position: relative;
-    }
-    .service-date {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        background: #0d6efd;
-        color: white;
-        padding: 4px 8px;
-        font-size: 14px;
-        border-radius: 4px;
-    }
-    .service-body {
-        padding: 15px;
-    }
-    .service-title {
-        font-size: 18px;
-        font-weight: bold;
-        color: #0d6efd;
-    }
-    .service-desc {
-        font-size: 14px;
-        color: #444;
-    }
+  .service-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.service-img-wrapper {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+}
+
+.service-img-wrapper img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+
+.badge-date {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #004aad;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 13px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.badge-date span {
+  font-size: 18px;
+  display: block;
+  line-height: 1;
+}
+
+.service-content {
+  padding: 12px;
+  text-align: center;
+}
+
+.service-subtitle {
+  font-size: 13px;
+  font-weight: bold;
+  color: #004aad;
+  text-transform: uppercase;
+}
+
+.service-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px 0;
+  color: #004aad;
+}
+
+.stars {
+  color: #fbc02d;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.read-more a {
+  font-size: 13px;
+  padding: 4px 10px;
+}
+
+.blog-content {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Số dòng muốn hiển thị */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: justify;
+  line-height: 1.6;
+}
+
+@media (min-width: 992px) {
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .service-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
 </style>
+  </body>
+</html>

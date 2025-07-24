@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import java.security.Security;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -8,15 +9,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.ui.Model;
 
 import com.example.demo.Entity.Blog;
+import com.example.demo.Entity.SecurityServiceEntity;
 import com.example.demo.Service.BlogService;
+import com.example.demo.Service.SecurityService;
 
 @Controller
 public class UserHomeController {
 
     private final BlogService blogService;
+    private final SecurityService securityService;
 
-    public UserHomeController(BlogService blogService) {
+    public UserHomeController(BlogService blogService, SecurityService securityService) {
         this.blogService = blogService;
+        this.securityService = securityService;
     }
 
     @GetMapping("/")
@@ -48,13 +53,22 @@ public class UserHomeController {
     }
 
     @GetMapping("/blog/{id}")
-        public String getBlogDetail(@PathVariable Long id, Model model) {
-            Blog blog = blogService.findById(id);
-            model.addAttribute("blog", blog);
-            return "user/blogDetail";
+    public String getBlogDetail(@PathVariable Long id, Model model) {
+        Blog blog = blogService.findById(id);
+        model.addAttribute("blog", blog);
+        return "user/blogDetail";
     }
     @GetMapping("/dich-vu")
-    public String dichvu() {
+    public String dichvu(Model model) {
+        List<SecurityServiceEntity> services = securityService.findAll();
+        services.sort((a, b) -> b.getCreatedAt().compareTo(a.getCreatedAt()));
+        model.addAttribute("services", services);
         return "user/dichvu";
+    }
+    @GetMapping("/dich-vu/{id}")
+    public String getServiceDetail(@PathVariable Long id, Model model) {
+        SecurityServiceEntity service = securityService.findById(id);
+        model.addAttribute("service", service);
+        return "user/serviceDetail";
     }
 }
