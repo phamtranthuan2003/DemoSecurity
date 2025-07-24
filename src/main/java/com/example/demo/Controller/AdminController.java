@@ -1,11 +1,15 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Entity.Blog;
+import com.example.demo.Entity.Customer;
 import com.example.demo.Entity.SecurityServiceEntity;
+import com.example.demo.Repository.CustomerRepository;
 import com.example.demo.Service.BlogService;
+import com.example.demo.Service.CustomerService;
 import com.example.demo.Service.SecurityService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +29,14 @@ public class AdminController {
     @Autowired
     private BlogService blogService;
     @Autowired
+    private CustomerRepository customerRepository;
+    @Autowired
     private final SecurityService serviceService;
+    @Autowired
+    private CustomerService customerService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
     public AdminController(SecurityService serviceService) {
         this.serviceService = serviceService;
@@ -257,5 +268,84 @@ public class AdminController {
     public String deleteService(@PathVariable("id") Long id) {
         serviceService.delete(id);
         return "redirect:/admin/servicesList";
+    }
+    @GetMapping("/customersList")
+    public String customersList(Model model) {
+        model.addAttribute("customers", customerService.findAll());
+        return "admin/customerList";
+    }
+    
+    @GetMapping("/signup")
+    public String signup() {
+        return "admin/signup";
+    }
+    @PostMapping("/signup")
+    public String signupSubmit(@RequestParam String username,
+            @RequestParam String email,
+            @RequestParam String password,
+            @RequestParam String rePassword,
+            @RequestParam String phone,
+            Model model) {
+
+        if (customerRepository.findByEmail(email).isPresent()) {
+            model.addAttribute("Error", "Email đã được sử dụng");
+            return "user/signup";
+        }
+
+        if (!password.equals(rePassword)) {
+            model.addAttribute("Error", "Mật khẩu không khớp");
+            return "admin/customerList";
+        }
+
+        Customer customer = new Customer();
+        customer.setUsername(username);
+        customer.setEmail(email);
+        customer.setPhone(phone);
+        
+        customer.setPassword(passwordEncoder.encode(password));
+
+        customerRepository.save(customer);
+        return "redirect:/login";
+    }
+
+    @GetMapping("/editCustomer/{id}")
+    public String editCustomer(@PathVariable Long id, Model model) {
+        Customer customer = customerService.findById(id);
+        if (customer == null) {
+            return "redirect:/admin/customersList";
+        }
+        model.addAttribute("customer", customer);
+        return "admin/editCustomer";
+    }
+    @PostMapping("/editCustomer/{id}")
+    public String updateCustomer(@PathVariable Long id,
+            @ModelAttribute Customer customer,
+            @RequestParam String username,
+            @RequestParam String email,
+            @RequestParam String phone,
+            @RequestParam(required = false) String password,
+            @RequestParam(required = false) String rePassword,
+            Model model) {
+
+        Customer existingCustomer = customerService.findById(id);
+        if (existingCustomer == null) {
+            return "redirect:/admin/customersList";
+        }
+
+        existingCustomer.setUsername(username);
+        existingCustomer.setEmail(email);
+        existingCustomer.setPhone(phone);
+
+        if (password != null && !password.isBlank()) {
+            if (!password.equals(rePassword)) {
+                model.addAttribute("Error", "Mật khẩu không khớp");
+                model.addAttribute("customer", existingCustomer);
+                return "admin/editCustomer";
+            }
+            existingCustomer.setPassword(passwordEncoder.encode(password));
+        }
+
+        customerService.save(existingCustomer);
+        return "redirect:/admin/customersList";
     }
 }
