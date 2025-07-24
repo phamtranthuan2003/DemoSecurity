@@ -53,4 +53,8 @@ public class UserHomeController {
             model.addAttribute("blog", blog);
             return "user/blogDetail";
     }
+    @GetMapping("/dich-vu")
+    public String dichvu() {
+        return "user/dichvu";
+    }
 }

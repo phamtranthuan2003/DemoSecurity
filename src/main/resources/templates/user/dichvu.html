@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dịch Vụ Bảo Vệ</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container my-4">
+        <h2 class="text-center mb-4">DỊCH VỤ</h2>
+        <div class="row">
+            
+        <!-- Lặp danh sách dịch vụ -->
+        <div class="col-md-6" th:each="service : ${services}">
+            <div class="service-card">
+                <div class="service-img">
+                    <img th:src="@{${service.imageUrl}}" class="img-fluid" alt="Ảnh dịch vụ">
+                    <div class="service-date" th:text="${#dates.format(service.datePosted, 'dd')} + ' Th' + ${#dates.format(service.datePosted, 'MM')}"></div>
+                </div>
+                <div class="service-body">
+                    <div class="service-title" th:text="${service.title}"></div>
+                    <div class="service-desc" th:text="${service.shortDescription}"></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</body>
+</html>
+
+<style>
+    .service-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        transition: 0.3s;
+    }
+    .service-card:hover {
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .service-img {
+        position: relative;
+    }
+    .service-date {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: #0d6efd;
+        color: white;
+        padding: 4px 8px;
+        font-size: 14px;
+        border-radius: 4px;
+    }
+    .service-body {
+        padding: 15px;
+    }
+    .service-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #0d6efd;
+    }
+    .service-desc {
+        font-size: 14px;
+        color: #444;
+    }
+</style>
