@@ -305,7 +305,7 @@ public class AdminController {
         customer.setPassword(passwordEncoder.encode(password));
 
         customerRepository.save(customer);
-        return "redirect:/login";
+        return "redirect:/admin/customersList";
     }
 
     @GetMapping("/editCustomer/{id}")
