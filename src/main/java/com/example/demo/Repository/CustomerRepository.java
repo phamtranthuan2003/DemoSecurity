@@ -10,6 +10,8 @@ import com.example.demo.Entity.Customer;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
     Optional<Customer> findByEmail(String email);
-     Optional<Customer> findByUsername(String username);
+
+    Optional<Customer> findByUsername(String username);
+
     boolean existsByEmail(String email);
 }

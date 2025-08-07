@@ -26,7 +26,7 @@ public class SecurityServiceEntity {
 
     @Column(nullable = true)
     private String image;
-    
+
     @CreationTimestamp
     private LocalDateTime createdAt;
 

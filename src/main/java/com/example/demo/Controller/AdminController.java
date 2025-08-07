@@ -37,7 +37,6 @@ public class AdminController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
     public AdminController(SecurityService serviceService) {
         this.serviceService = serviceService;
     }
@@ -115,6 +114,7 @@ public class AdminController {
             return response;
         }
     }
+
     @GetMapping("/blogs/edit/{id}")
     public String editBlog(@PathVariable Long id, Model model) {
         Blog blog = blogService.findById(id);
@@ -161,15 +161,18 @@ public class AdminController {
         blogService.delete(id);
         return "redirect:/admin/blogsList";
     }
+
     @GetMapping("/servicesList")
     public String servicesList(Model model) {
         model.addAttribute("services", serviceService.findAll());
         return "admin/service/servicesList";
     }
+
     @GetMapping("/services/create")
     public String createService() {
         return "admin/service/createService";
     }
+
     @PostMapping("/services/save")
     public String saveService(@RequestParam("title") String title,
             @RequestParam("content") String content,
@@ -197,6 +200,7 @@ public class AdminController {
         serviceService.save(service);
         return "redirect:/admin/servicesList";
     }
+
     @PostMapping("/services/upload-image")
     @ResponseBody
     public Map<String, Object> handleEditorImageUpload(@RequestParam("upload") MultipartFile file) {
@@ -224,6 +228,7 @@ public class AdminController {
             return response;
         }
     }
+
     @GetMapping("/services/edit/{id}")
     public String editService(@PathVariable Long id, Model model) {
         SecurityServiceEntity service = serviceService.findById(id);
@@ -269,16 +274,18 @@ public class AdminController {
         serviceService.delete(id);
         return "redirect:/admin/servicesList";
     }
+
     @GetMapping("/customersList")
     public String customersList(Model model) {
         model.addAttribute("customers", customerService.findAll());
         return "admin/customerList";
     }
-    
+
     @GetMapping("/signup")
     public String signup() {
         return "admin/signup";
     }
+
     @PostMapping("/signup")
     public String signupSubmit(@RequestParam String username,
             @RequestParam String email,
@@ -301,7 +308,7 @@ public class AdminController {
         customer.setUsername(username);
         customer.setEmail(email);
         customer.setPhone(phone);
-        
+
         customer.setPassword(passwordEncoder.encode(password));
 
         customerRepository.save(customer);
@@ -317,6 +324,7 @@ public class AdminController {
         model.addAttribute("customer", customer);
         return "admin/editCustomer";
     }
+
     @PostMapping("/editCustomer/{id}")
     public String updateCustomer(@PathVariable Long id,
             @ModelAttribute Customer customer,

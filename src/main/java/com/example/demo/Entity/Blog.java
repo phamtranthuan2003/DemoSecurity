@@ -21,7 +21,7 @@ public class Blog {
 
     @Column(nullable = true)
     private String image;
-    
+
     private String author;
 
     @CreationTimestamp
@@ -75,8 +75,6 @@ public class Blog {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
-
-    
 
     public String getImage() {
         return image;

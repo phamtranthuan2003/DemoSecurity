@@ -15,10 +15,10 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Customer customer = customerRepository.findByEmail(email)
-            .orElseThrow(() -> new UsernameNotFoundException("Email not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("Email not found"));
 
         return User.builder()
-                .username(customer.getEmail()) // quan trọng: dùng email làm username
+                .username(customer.getEmail())
                 .password(customer.getPassword())
                 .roles("ADMIN")
                 .build();

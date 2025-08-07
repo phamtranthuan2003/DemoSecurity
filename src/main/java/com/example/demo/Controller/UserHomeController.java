@@ -46,7 +46,7 @@ public class UserHomeController {
         model.addAttribute("blogs", blogs);
         return "user/tuyendung";
     }
-    
+
     @GetMapping("/hinh-anh-hoat-dong")
     public String hinhanhhoatdong() {
         return "user/hinhanhhoatdong";
@@ -58,6 +58,7 @@ public class UserHomeController {
         model.addAttribute("blog", blog);
         return "user/blogDetail";
     }
+
     @GetMapping("/dich-vu")
     public String dichvu(Model model) {
         List<SecurityServiceEntity> services = securityService.findAll();
@@ -65,6 +66,7 @@ public class UserHomeController {
         model.addAttribute("services", services);
         return "user/dichvu";
     }
+
     @GetMapping("/dich-vu/{id}")
     public String getServiceDetail(@PathVariable Long id, Model model) {
         SecurityServiceEntity service = securityService.findById(id);

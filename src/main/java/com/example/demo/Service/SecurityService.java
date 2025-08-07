@@ -5,7 +5,10 @@ import com.example.demo.Entity.SecurityServiceEntity;
 
 public interface SecurityService {
     List<SecurityServiceEntity> findAll();
+
     SecurityServiceEntity findById(Long id);
+
     void save(SecurityServiceEntity service);
+
     void delete(Long id);
 }

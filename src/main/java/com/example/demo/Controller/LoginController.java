@@ -16,11 +16,12 @@ import com.example.demo.Repository.CustomerRepository;
 public class LoginController {
     @Autowired
     private CustomerRepository customerRepository;
-    
+
     @GetMapping("/login")
     public String login() {
         return "login";
     }
+
     @PostMapping("/login")
     public String loginSubmit(@RequestParam String email,
             @RequestParam String password,
