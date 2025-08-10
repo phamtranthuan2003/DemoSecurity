@@ -25,7 +25,10 @@ public class UserHomeController {
     }
 
     @GetMapping("/")
-    public String home() {
+    public String home(Model model) {
+        List<SecurityServiceEntity> services = securityService.findAll();
+        services.sort((a, b) -> b.getCreatedAt().compareTo(a.getCreatedAt()));
+        model.addAttribute("services", services);
         return "user/home";
     }
 
